@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .user {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .user img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section class="user-section">
+        <h1>Top Users by Coins</h1>
+        <ol>
+            {% for user in top_users %}
+                <li class="user">
+                    <img src="{{ user.avatar }}" alt="{{ user.username }} Avatar">
+                    <span>{{ user.username }} - {{ user.currency }} Coins</span>
+                </li>
+            {% endfor %}
+        </ol>
+    </section>
+</body>
+</html>

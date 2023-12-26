@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <section class="user-section">
+    <h1>User Profile</h1>
+
+    <h2>Welcome, {{ user.username }}!</h2>
+
+    <!-- Display the user's avatar with the option to change it -->
+    <img src="{{ user.avatar }}" alt="User Avatar" width="150" height="150">
+    <form action="{{ url_for('update_profile') }}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="avatar" accept="image/*">
+        <input type="submit" value="Change Avatar">
+    </form>
+
+    <!-- Display and allow editing of the user's username -->
+    <form action="{{ url_for('update_profile') }}" method="POST">
+        <label for="new_username">Username:</label>
+        <input type="text" id="new_username" name="new_username" value="{{ user.username }}" required>
+        <input type="submit" value="Change Username">
+    </form>
+
+    <p>Currency: {{ user.currency }}</p>
+
+    <!-- Display additional user information -->
+    <h3>Additional Information</h3>
+    <p>Email: {{ user.email }}</p>
+    <!-- Add more fields as needed -->
+
+    <a href="{{ url_for('logout') }}">Logout</a>
+
+    <!-- Add any other profile-related content here -->
+    </section>
+</body>
+</html>

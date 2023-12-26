@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="ru"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>balance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='nicepage.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='balance.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='all.css') }}">
+    <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='jquery.js') }}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='nicepage.js') }}" defer=""></script>
+    <meta name="generator" content="Nicepage 5.1.5, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Averia+Sans+Libre:300,300i,400,400i,700,700i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "Site6"
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="balance">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+  <style>
+img { pointer-events: none; }
+</style>
+<script type="text/javascript">
+
+               document.ondragstart = noselect;
+
+               document.onselectstart = noselect;
+
+               document.oncontextmenu = noselect;
+
+               function noselect() {return false;}
+
+</script>
+<script>
+//For Firefox we have to handle it in JavaScript 
+var vids = $("video"); 
+$.each(vids, function(){
+       this.controls = false; 
+}); 
+//Loop though all Video tags and set Controls as false
+
+$("video").click(function() {
+  //console.log(this); 
+  if (this.paused) {
+    this.play();
+  } else {
+    this.pause();
+  }
+});
+</script>
+<script>
+let contextMenu = document.querySelectorAll('.context-menu'); 
+let contextMenuOpen = document.querySelector('.context-menu-open'); 
+for (let i = 0; i < contextMenu.length; i++){ 
+    contextMenu[i].addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        contextMenuOpen.style.left = e.clientX + 'px'; 
+        contextMenuOpen.style.top = e.clientY + 'px';
+        contextMenuOpen.style.display = 'block';
+    });
+}    
+window.addEventListener('click', function() {
+    contextMenuOpen.style.display = 'none';
+});
+
+2
+3
+4
+5
+6
+7
+8
+9
+let = contextMenu = $('.context-menu-open');
+$('.context-menu').on('contextmenu', function (e) {
+    e.preventDefault();
+    contextMenu.css({top: e.clientY + 'px', left: e.clientX + 'px' }); 
+    contextMenu.show();
+});
+$(document).on('click', function () {
+    contextMenu.hide();
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script>
+<script>
+SmoothScroll({
+    // Время скролла 400 = 0.4 секунды
+    animationTime    : 800,
+    // Размер шага в пикселях 
+    stepSize         : 75,
+
+    // Дополнительные настройки:
+    
+    // Ускорение 
+    accelerationDelta : 30,  
+    // Максимальное ускорение
+    accelerationMax   : 2,   
+
+    // Поддержка клавиатуры
+    keyboardSupport   : true,  
+    // Шаг скролла стрелками на клавиатуре в пикселях
+    arrowScroll       : 50,
+
+    // Pulse (less tweakable)
+    // ratio of "tail" to "acceleration"
+    pulseAlgorithm   : true,
+    pulseScale       : 4,
+    pulseNormalize   : 1,
+
+    // Поддержка тачпада
+    touchpadSupport   : true,
+})
+</script></head>
+  <body data-home-page="balance.html" data-home-page-title="balance" class="u-body u-overlap u-xl-mode" data-lang="ru"><header class="u-clearfix u-header u-sticky u-header" id="sec-8a83"><div class="u-clearfix u-sheet u-sheet-1">
+      {% if user %}
+      <div class="u-clearfix u-sheet u-valign-middle-xl u-sheet-1">
+        <img class="u-image u-image-circle u-preserve-proportions u-image-1" src="{{ user.avatar }}" alt="" data-image-width="1080" data-image-height="1080">
+        <p class="u-custom-font u-font-montserrat u-text u-text-default u-text-1"><a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-custom-color-3 u-btn-3" href="{{ url_for('profile') }}">{{ user.username }}</a></p>
+        <p class="u-text u-text-custom-color-3 u-text-default u-text-2">
+          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-custom-color-3 u-btn-3" href="{{ url_for('logout') }}">logOut</a>
+        </p>
+      </div>
+      {% else %}
+      <div class="u-clearfix u-sheet u-valign-middle-xl u-sheet-1">
+        <a href="login" class="u-btn u-button-style u-custom-color-3 u-text-black u-btn-1">Вход</a>
+        <a href="register" class="u-btn u-button-style u-custom-color-3 u-text-black u-btn-2">Регистрация</a>
+      </div>
+      {% endif %}
+    </div>
+    </header>
+    <section class="u-clearfix u-image u-section-1" id="sec-7135" data-image-width="1920" data-image-height="1080">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="chromeiblur u-border-1 u-border-custom-color-5 u-container-style u-custom-color-5 u-group u-radius-25 u-shape-round u-group-1">
+          <div class="u-container-layout u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-1">
+            <p class="u-align-center u-custom-font u-font-montserrat u-text u-text-1">
+              <span class="u-text-custom-color-3"><span class="u-file-icon u-icon"><img src="/static/images/-11212.png" alt=""></span>&nbsp;<span id="coinCount">{{ user.currency }}</span>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="u-align-center u-clearfix u-expanded-width-xs u-group-elements u-group-elements-1">
+          <a href="{{ url_for('transfer') }}" class="chromeiblur u-border-1 u-border-custom-color-5 u-btn u-button-style u-custom-color-5 u-radius-25 u-text-custom-color-3 u-btn-1">Перевод</a>
+          <a href="{{ url_for('transfer') }}" class="chromeiblur u-border-1 u-border-custom-color-5 u-btn u-button-style u-custom-color-5 u-radius-25 u-text-custom-color-3 u-btn-2">Получить</a>
+          <a href="{{ url_for('transfer') }}" class="chromeiblur u-border-1 u-border-custom-color-5 u-btn u-button-style u-custom-color-5 u-radius-25 u-text-custom-color-3 u-btn-3">Биржа</a>
+          <a href="{{ url_for('transfer') }}" class="chromeiblur u-border-1 u-border-custom-color-5 u-btn u-button-style u-custom-color-5 u-radius-25 u-text-custom-color-3 u-btn-4">Магазин</a>
+        </div>
+        <a class="u-btn u-button-style u-custom-color-3 u-radius-33 u-text-grey-80 u-btn-5" id="clickButton" onclick="sendClickToServer()">Клик!</a>
+      </div>
+    </section>
+    <div id="message-box" class="hidden">Ошибка! Код: Сайк осел!!!!!!!!!!</div>
+    <div id="message-box1" class="hidden">Успешно!</div>
+    <script>
+      function showMessage() {
+          const messageBox = document.getElementById('message-box');
+          // Показываем сообщение
+          messageBox.style.display = 'block';
+          // Скрываем сообщение через 3 секунды (3000 миллисекунд)
+          setTimeout(() => {
+              messageBox.style.display = 'none';
+          }, 3000);
+      }
+      function showMessage1() {
+          const messageBox = document.getElementById('message-box1');
+          // Показываем сообщение
+          messageBox.style.display = 'block';
+          // Скрываем сообщение через 3 секунды (3000 миллисекунд)
+          setTimeout(() => {
+              messageBox.style.display = 'none';
+          }, 3000);
+      }
+      function sendClickToServer() {
+          console.log("sendClickToServer() called");
+          $.post("/click", function(data) {
+              if (data.success) {
+                  showMessage1();
+              } else {
+                  showMessage();
+              }
+          });
+      }
+      // Функция для обновления currency каждую секунду
+      function updateCurrency() {
+          $.get("/get_currency", function(data) {
+              if (data.success) {
+                  // Обновляем значение currency на странице
+                  const currencyElement = document.getElementById('coinCount');
+                  currencyElement.textContent = data.currency;
+              }
+          });
+      }
+      // Вызываем функцию updateCurrency каждую секунду
+      setInterval(updateCurrency, 1000);
+      </script>
+</body></html>

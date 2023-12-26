@@ -1,0 +1,42 @@
+.avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 25px;
+    margin-bottom: -1%;
+  }
+  #message-box {
+    background-color: rgba(255, 0, 98, 0.11);
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #ff0000;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    color: #ccc;
+  }
+  #message-box1 {
+    background-color: rgba(0, 247, 255, 0.11);
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #00ff80;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    color: #ccc;
+  }
+  .hidden {
+    display: none;
+  }

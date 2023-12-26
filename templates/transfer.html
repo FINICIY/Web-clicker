@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Funds</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <h1>Transfer Funds</h1>
+    <form method="POST" action="/transfer">
+        <label for="recipient">Recipient:</label>
+        <input type="text" name="recipient" required>
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" required>
+        <br>
+        <input type="submit" value="Transfer">
+    </form>
+</body>
+</html>

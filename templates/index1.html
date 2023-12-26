@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% if user %}
+    <div class="user-info">
+        <p href="{{ url_for('profile') }}"><img href="{{ url_for('profile') }}" src="{{ user.avatar }}" alt="User Avatar" class="avatar" id="avatar">{{ user.username }} <a href="{{ url_for('logout') }}" class="sss">Logout</a> <a href="{{ url_for('profile') }}" class="ot">Profile</a></p>
+    </div>
+    {% else %}
+        <div class="user-info">
+            <p>You're not logged in. <a href="{{ url_for('register') }}">Register</a> or <a href="{{ url_for('login') }}">Login</a></p>
+        </div>
+    {% endif %}
+    <main>
+        <section class="user-section">
+            <p><img src="./static/images/32-coin.png" alt="StarCoin"  width="17" height="17" class="to">StarCoins: <span id="coinCount">{{ user.currency }}</span></p> <!-- Добавляем элемент для отображения количества монет -->
+        </section>
+        <section class="user-section">
+            <button id="clickButton" onclick="sendClickToServer()">Click me!</button>
+        </section>
+        <section class="user-section">
+            <a href="{{ url_for('transfer') }}">Перевод</ф>
+            <a href="/top_users/100" class="ot">Топ 100</a>
+            <a href="{{ url_for('item_list') }}" class="sss">Browse Items</a>
+        </section>
+    </main>
+    <div id="message-box" class="hidden">Ошибка! Код: Сайк осел!!!!!!!!!!</div>
+    <div id="message-box1" class="hidden">Успешно!</div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    function showMessage() {
+        const messageBox = document.getElementById('message-box');
+        // Показываем сообщение
+        messageBox.style.display = 'block';
+        // Скрываем сообщение через 3 секунды (3000 миллисекунд)
+        setTimeout(() => {
+            messageBox.style.display = 'none';
+        }, 3000);
+    }
+    function showMessage1() {
+        const messageBox = document.getElementById('message-box1');
+        // Показываем сообщение
+        messageBox.style.display = 'block';
+        // Скрываем сообщение через 3 секунды (3000 миллисекунд)
+        setTimeout(() => {
+            messageBox.style.display = 'none';
+        }, 3000);
+    }
+    function sendClickToServer() {
+        console.log("sendClickToServer() called");
+        $.post("/click", function(data) {
+            if (data.success) {
+                showMessage1();
+            } else {
+                showMessage();
+            }
+        });
+    }
+    // Функция для обновления currency каждую секунду
+    function updateCurrency() {
+        $.get("/get_currency", function(data) {
+            if (data.success) {
+                // Обновляем значение currency на странице
+                const currencyElement = document.getElementById('coinCount');
+                currencyElement.textContent = data.currency;
+            }
+        });
+    }
+    // Вызываем функцию updateCurrency каждую секунду
+    setInterval(updateCurrency, 1000);
+    </script>
+</body>
+</html>

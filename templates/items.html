@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Item List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <section class="user-section">
+        <h1>Item List</h1>
+        <ul>
+            {% for item_id, item in items.items() %}
+                <li>
+                    {{ item['name'] }} - Price: {{ item['price'] }} TiCoin
+                    <form action="{{ url_for('buy_item', item_id=item_id) }}" method="post">
+                        <button type="submit">Buy</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+</body>
+</html>
