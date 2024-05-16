@@ -67,7 +67,7 @@ def register():
                     'currency': 0,
                     'inventory': [],
                     'avatar': '/static/avatars/user1_avatar.png',
-                    'is_banned': False  # Добавляем поле is_banned
+                    'is_banned': False 
                 }
                 data['users'][new_username] = new_user
                 save_data(data)
